@@ -11,21 +11,26 @@ function humanPlay() {
     let value = "";
     let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?", "rock");
 
-    let PlayerSelection = playersChoice?.toLowerCase();
-    if (PlayerSelection == 'rock') {
+    let PlayerSelection = playersChoice.toLowerCase();
+    if (option.includes(PlayerSelection)) {
         value = PlayerSelection;
         return value;
     } else {
-        window.alert('You have to choose between Rock, Paper or Scissors');
+        alert('You have to choose between Rock, Paper or Scissors');
+        return;
     }
 }
-
+let playerCount = 0;
+let computerCount = 0;
 function playRound(PlayerSelection, computerSelection) {
+   
     switch (PlayerSelection) {
         case 'rock': {
             if (computerSelection == 'paper') {
+                computerCount = computerCount + 1;
                 return "You Lose! Paper beats Rock"
             } else if (computerSelection == 'scissors') {
+                playerCount = playerCount + 1;
                 return "You Win! Rock beats Scissors"
             } else if (computerSelection == 'rock') {
                 return "Draw"
@@ -34,8 +39,10 @@ function playRound(PlayerSelection, computerSelection) {
         }
         case 'paper': {
             if (computerSelection == 'rock') {
+                playerCount = playerCount + 1;
                 return "You Win! Paper beats Rock"
             } else if (computerSelection == 'scissors') {
+                computerCount = computerCount + 1;
                 return "You Lose! Scissors beats Paper"
             } else if (computerSelection == 'paper') {
                 return "Draw"
@@ -44,8 +51,10 @@ function playRound(PlayerSelection, computerSelection) {
         }
         case 'scissors': {
             if (computerSelection == 'rock') {
+                computerCount = computerCount + 1;
                 return "You Lose! Rock beats Scissors"
             } else if (computerSelection == 'paper') {
+                playerCount = playerCount + 1;
                 return "You Win! Scissors beats Paper"
             } else if (computerSelection == 'scissors') {
                 return "Draw"
@@ -53,15 +62,22 @@ function playRound(PlayerSelection, computerSelection) {
             break;
         }
         default:
-            return 'Make your choice'
+            return 'Restart the game'
     }
 }
 
 
-// playRound(humanPlay(),computerPlay())
+ 
 
 function game(){
-    
+    for (let i = 0; i < 5; i++) {
+        playRound(humanPlay(),computerPlay());
+        console.log(playRound(humanPlay(),computerPlay()))
+    }
+     if (playerCount < computerCount) {
+         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! Computer Win`)
+     } else if (playerCount == computerCount) {console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! It is a draw`)}
+     else { console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! You Win`) }
 }
 
 
