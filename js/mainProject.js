@@ -1,4 +1,3 @@
-
 const option = ['rock', 'paper', 'scissors'];
 
 function computerPlay() {
@@ -12,13 +11,7 @@ function humanPlay() {
     let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?", "rock");
 
     let PlayerSelection = playersChoice.toLowerCase();
-    if (option.includes(PlayerSelection)) {
-        value = PlayerSelection;
-        return value;
-    } else {
-        alert('You have to choose between Rock, Paper or Scissors');
-        return;
-    }
+    return PlayerSelection
 }
 let playerCount = 0;
 let computerCount = 0;
@@ -71,22 +64,14 @@ function playRound(PlayerSelection, computerSelection) {
 
 function game(){
     for (let i = 0; i < 5; i++) {
-        playRound(humanPlay(),computerPlay());
-        console.log(playRound(humanPlay(),computerPlay()))
+         if (!option.includes(humanPlay())) {
+             alert('You have to choose between Rock, Paper, Scissors!')
+       break;
+    }else {
+        playRound(humanPlay(),computerPlay());}
     }
      if (playerCount < computerCount) {
          console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! Computer Win`)
      } else if (playerCount == computerCount) {console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! It is a draw`)}
      else { console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! You Win`) }
 }
-
-
-
-
-
-
-
-
-
-
-
