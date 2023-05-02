@@ -8,20 +8,20 @@ let computerPlay = () => {
 }
 
 function playRound(PlayerSelection, computerSelection) {
-   
+
     switch (PlayerSelection) {
         case 'rock': {
             if (computerSelection == 'paper') {
                 playerCount;
                 computerCount = computerCount + 1;
-                 alert("You Lose! Paper beats Rock")
+                confirm("Computer selected Paper. You Lose! Paper beats Rock")
             } else if (computerSelection == 'scissors') {
                 computerCount;
                 playerCount = playerCount + 1;
-                 alert("You Win! Rock beats Scissors")
+                confirm("Computer selected Scissors. You Win! Rock beats Scissors")
             } else if (computerSelection == 'rock') {
                 playerCount; computerCount;
-                 alert("Draw")
+                confirm("Computer selected the same, it is a Draw")
             }
             break;
         }
@@ -29,14 +29,14 @@ function playRound(PlayerSelection, computerSelection) {
             if (computerSelection == 'rock') {
                 computerCount;
                 playerCount = playerCount + 1;
-                 alert("You Win! Paper beats Rock")
+                confirm("Computer selected Rock. You Win! Paper beats Rock")
             } else if (computerSelection == 'scissors') {
                 playerCount;
                 computerCount = computerCount + 1;
-                 alert("You Lose! Scissors beats Paper")
+                confirm("Computer selected Scissors. You Lose! Scissors beats Paper")
             } else if (computerSelection == 'paper') {
                 playerCount; computerCount;
-                 alert("Draw")
+                confirm("Computer selected the same, it is a Draw")
             }
             break;
         }
@@ -44,14 +44,14 @@ function playRound(PlayerSelection, computerSelection) {
             if (computerSelection == 'rock') {
                 playerCount;
                 computerCount = computerCount + 1;
-                 alert("You Lose! Rock beats Scissors")
+                confirm("Computer selected Rock. You Lose! Rock beats Scissors")
             } else if (computerSelection == 'paper') {
                 computerCount;
                 playerCount = playerCount + 1;
-                 alert("You Win! Scissors beats Paper")
+                confirm("Computer selected Paper. You Win! Scissors beats Paper")
             } else if (computerSelection == 'scissors') {
                 playerCount; computerCount;
-                 alert("Draw")
+                confirm("Computer selected the same, it is a Draw")
             }
             break;
         }
@@ -59,20 +59,20 @@ function playRound(PlayerSelection, computerSelection) {
     }
 }
 
-function game(){
+function game() {
     for (let i = 0; i < 5; i++) {
-            let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?", "rock");
-            let PlayerSelection = playersChoice.toLowerCase();
-            if (!option.includes(PlayerSelection)) {
-                alert('You have to choose between Rock, Paper, Scissors!')
-                alert('Restart the game!')
-                playerCount = 0;
-                computerCount = 0;
-                clear();
-                break;
-            }
+        let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?", "rock");
+        let PlayerSelection = playersChoice.toLowerCase();
+        if (!option.includes(PlayerSelection)) {
+            alert('You have to choose between Rock, Paper, Scissors!')
+            alert('Restart the game!')
+            playerCount = 0;
+            computerCount = 0;
+            clear();
+            break;
+        }
         else {
-        playRound(PlayerSelection, computerPlay())
+            playRound(PlayerSelection, computerPlay())
         }
     };
     if (playerCount < computerCount) {
@@ -80,10 +80,9 @@ function game(){
     } else if (playerCount == computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! It is a draw!`)
     }
-    else { 
+    else {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! You Win!!!`)
     }
     playerCount = 0;
     computerCount = 0;
 }
-
