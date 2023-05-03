@@ -13,49 +13,49 @@ function playRound(PlayerSelection, computerSelection) {
         case 'rock': {
             if (computerSelection == 'paper') {
                 playerCount;
-                computerCount = computerCount + 1;
-                confirm("Computer selected Paper. You Lose! Paper beats Rock")
+                computerCount++;
+                confirm("Computer selected Paper. You Lose! Paper beats Rock");
             } else if (computerSelection == 'scissors') {
                 computerCount;
-                playerCount = playerCount + 1;
-                confirm("Computer selected Scissors. You Win! Rock beats Scissors")
+                playerCount++;
+                confirm("Computer selected Scissors. You Win! Rock beats Scissors");
             } else if (computerSelection == 'rock') {
                 playerCount; computerCount;
-                confirm("Computer selected the same, it is a Draw")
+                confirm("Computer selected the same, it is a Draw");
             }
             break;
         }
         case 'paper': {
             if (computerSelection == 'rock') {
                 computerCount;
-                playerCount = playerCount + 1;
-                confirm("Computer selected Rock. You Win! Paper beats Rock")
+                playerCount++;
+                confirm("Computer selected Rock. You Win! Paper beats Rock");
             } else if (computerSelection == 'scissors') {
                 playerCount;
-                computerCount = computerCount + 1;
-                confirm("Computer selected Scissors. You Lose! Scissors beats Paper")
+                computerCount++;
+                confirm("Computer selected Scissors. You Lose! Scissors beats Paper");
             } else if (computerSelection == 'paper') {
                 playerCount; computerCount;
-                confirm("Computer selected the same, it is a Draw")
+                confirm("Computer selected the same, it is a Draw");
             }
             break;
         }
         case 'scissors': {
             if (computerSelection == 'rock') {
                 playerCount;
-                computerCount = computerCount + 1;
-                confirm("Computer selected Rock. You Lose! Rock beats Scissors")
+                computerCount++;
+                confirm("Computer selected Rock. You Lose! Rock beats Scissors");
             } else if (computerSelection == 'paper') {
                 computerCount;
-                playerCount = playerCount + 1;
-                confirm("Computer selected Paper. You Win! Scissors beats Paper")
+                playerCount++;
+                confirm("Computer selected Paper. You Win! Scissors beats Paper");
             } else if (computerSelection == 'scissors') {
                 playerCount; computerCount;
-                confirm("Computer selected the same, it is a Draw")
+                confirm("Computer selected the same, it is a Draw");
             }
             break;
         }
-        default: alert("Something goes wrong!")
+        default: alert("Something goes wrong!");
     }
 }
 
@@ -77,10 +77,10 @@ function game() {
     };
     if (playerCount < computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! Computer Win!!!`)
-    } else if (playerCount == computerCount) {
+    } else if (playerCount !== 0 && playerCount === computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! It is a draw!`)
     }
-    else {
+    else if (playerCount > computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! You Win!!!`)
     }
     playerCount = 0;
