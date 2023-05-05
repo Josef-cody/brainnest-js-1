@@ -60,8 +60,8 @@ function playRound(PlayerSelection, computerSelection) {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?", "rock");
+    for (let i = 1; i < 6; i++) {
+        let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?" + "\n Round " + i, "rock");
         let PlayerSelection = playersChoice.toLowerCase();
         if (!option.includes(PlayerSelection)) {
             alert('You have to choose between Rock, Paper, Scissors!')
@@ -86,3 +86,4 @@ function game() {
     playerCount = 0;
     computerCount = 0;
 }
+game()
