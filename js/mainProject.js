@@ -1,11 +1,23 @@
 const option = ['rock', 'paper', 'scissors'];
 let playerCount = 0;
 let computerCount = 0;
-
+let i = 1;
 let computerPlay = () => {
-    let randomIndex = Math.floor(Math.random() * 3);
+    let randomIndex = Math.floor(Math.random() * option.length);
     return option[randomIndex];
 }
+let humanPlay = () => {
+    let playersChoice = prompt(`Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice? \n Round ${i}`);
+    if (playersChoice === null) { alert('Try again') } else {
+        let playersChoiceLowerCase = playersChoice.toLowerCase();
+        while (!option.includes(playersChoiceLowerCase) && playersChoiceLowerCase !== null) {
+            playersChoiceLowerCase = prompt('You have to choose between rock, paper, scissors!');
+        }
+        return playersChoiceLowerCase
+    }
+    return playersChoice
+}
+
 
 function playRound(PlayerSelection, computerSelection) {
 
@@ -55,25 +67,16 @@ function playRound(PlayerSelection, computerSelection) {
             }
             break;
         }
-        default: alert("Something goes wrong!");
+        default:
     }
 }
 
 function game() {
-    for (let i = 1; i < 6; i++) {
-        let playersChoice = prompt("Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice?" + "\n Round " + i, "rock");
-        let PlayerSelection = playersChoice.toLowerCase();
-        if (!option.includes(PlayerSelection)) {
-            alert('You have to choose between Rock, Paper, Scissors!')
-            alert('Restart the game!')
-            playerCount = 0;
-            computerCount = 0;
-            clear();
-            break;
-        }
-        else {
-            playRound(PlayerSelection, computerPlay())
-        }
+    for (i = 1; i < 6; i++) {
+        const PlayerSelection = humanPlay();
+        const computerSelection = computerPlay();
+        if (PlayerSelection === null) { i-- } 
+        playRound(PlayerSelection, computerSelection)
     };
     if (playerCount < computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! Computer Win!!!`)
@@ -86,4 +89,3 @@ function game() {
     playerCount = 0;
     computerCount = 0;
 }
-game()
