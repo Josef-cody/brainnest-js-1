@@ -2,21 +2,35 @@ const option = ['rock', 'paper', 'scissors'];
 let playerCount = 0;
 let computerCount = 0;
 let i = 1;
+
 let computerPlay = () => {
     let randomIndex = Math.floor(Math.random() * option.length);
     return option[randomIndex];
 }
 let humanPlay = () => {
-    let playersChoice = prompt(`Jigsaw : I want to play a game. \n Rock, Paper, Scissors! \n What's your choice? \n Round ${i}`);
-    if (playersChoice === null) { alert('Try again') } else {
-        let playersChoiceLowerCase = playersChoice.toLowerCase();
-        while (!option.includes(playersChoiceLowerCase) && playersChoiceLowerCase !== null) {
-            playersChoiceLowerCase = prompt('You have to choose between rock, paper, scissors!');
+    let playersChoice = prompt(`Round ${i} \n What's your choice? `, 'rock');
+
+    while (playersChoice === null || playersChoice === "") {
+        let confirm = prompt('Are you sure to quit? Please type \'Yes\' to continue or leave it empty / press cancel to quit the game');
+        if (confirm === null || confirm == "") {
+            return playersChoice
+        } else if (confirm.trim().toLowerCase() === 'yes') {
+            i--;
+            return;
+        }
+    };
+    if (playersChoice !== null || playersChoice !== "") {
+        let playersChoiceLowerCase = playersChoice.trim().toLowerCase();
+        while (!option.includes(playersChoiceLowerCase)) {
+            playersChoiceLowerCase = prompt('You have to choose between rock, paper, scissors!').trim().toLowerCase();;
         }
         return playersChoiceLowerCase
     }
-    return playersChoice
+
+
 }
+
+
 
 
 function playRound(PlayerSelection, computerSelection) {
@@ -71,13 +85,7 @@ function playRound(PlayerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (i = 1; i < 6; i++) {
-        const PlayerSelection = humanPlay();
-        const computerSelection = computerPlay();
-        if (PlayerSelection === null) { i-- } 
-        playRound(PlayerSelection, computerSelection)
-    };
+const outcome = () => {
     if (playerCount < computerCount) {
         console.log(`Your score is ${playerCount}, computer's score is ${computerCount}! Computer Win!!!`)
     } else if (playerCount !== 0 && playerCount === computerCount) {
@@ -89,3 +97,15 @@ function game() {
     playerCount = 0;
     computerCount = 0;
 }
+function game() {
+    alert('Welcome! I wanna play a game, it is a classic, \n Rock, Paper, Scissors! \n It is a 5 round game! \n Press OK to start the game');
+    for (i = 1; i < 6; i++) {
+        const PlayerSelection = humanPlay();
+        const computerSelection = computerPlay();
+        if (PlayerSelection === null) { break }
+        playRound(PlayerSelection, computerSelection)
+    };
+    outcome();
+}
+
+game()
